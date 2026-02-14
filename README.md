@@ -55,8 +55,8 @@ Install via `requirements.txt`:
 
 1. **Clone the Repository**
    ```bash
-   git clone https://github.com/your-repo/forex-rsi-bot.git
-   cd forex-rsi-bot
+   git clone https://github.com/abibinu/RSI-Scalper.git
+   cd RSI-Scalper
    ```
 
 2. **Initialize Virtual Environment**
