@@ -59,12 +59,7 @@ python-dotenv
 
 Installation & setup
 
-1. Clone the repo:
-
-
-
-git clone https://github.com/yourusername/forex-rsi-scalping-bot.git
-cd forex-rsi-scalping-bot
+1. Clone the repo.
 
 2. Create and activate a virtual environment:
 
