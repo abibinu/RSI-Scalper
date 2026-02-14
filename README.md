@@ -1,97 +1,95 @@
-Forex RSI Mean Reversion Scalping Bot
+<div align="center">
 
- 
+# 📊 Forex RSI Mean Reversion Scalping Bot
 
-A concise, production-ready implementation of an RSI-based mean-reversion scalping bot for EUR/USD on MetaTrader 5. The repository contains the trading logic, MT5 connectivity, risk manager, and utilities needed to run and test the strategy.
+[![Python 3.8+](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://www.python.org/downloads/)
+[![Platform MT5](https://img.shields.io/badge/Platform-MetaTrader%205-orange.svg)](https://www.mql5.com/en/terminal)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
+[![Market EURUSD](https://img.shields.io/badge/Market-EURUSD-blue)](https://www.google.com/finance/quote/EUR-USD)
 
+**A concise, production-ready RSI-based mean-reversion scalping bot for EUR/USD on MetaTrader 5.**
 
----
-
-Quick facts
-
-Strategy: 9-period RSI mean-reversion (extreme thresholds: 25/75)
-
-Timeframe: M5 (5-minute candles)
-
-TP / SL: 15 pips / 8 pips (configurable)
-
-Primary pair: EURUSD
-
-Platform: MetaTrader 5 (MT5 Python API)
-
-
+</div>
 
 ---
 
-Highlights
+## 🚀 Overview
+This repository provides a complete automated trading solution, including logic for MT5 connectivity, risk management, and utility functions. It is designed to exploit overbought and oversold conditions using a mean-reversion strategy.
 
-MT5 integration and automated execution
-
-Spread and session filtering (IST hours by default)
-
-Dynamic position sizing & daily loss limits
-
-Clear logging and simple configuration
-
-
-
----
-
-Requirements
-
-Python 3.8+
-
-MT5 terminal installed and logged in (IC Markets or similar broker)
-
-Stable internet (VPS recommended for 24/7 run)
-
-
-Python packages (install via requirements.txt):
-
-MetaTrader5
-pandas
-numpy
-ta-lib
-python-dotenv
-
+### 📋 Quick Facts
+| Feature | Details |
+| :--- | :--- |
+| **Strategy** | 9-period RSI Mean-Reversion |
+| **Thresholds** | Extreme RSI levels (25 / 75) |
+| **Timeframe** | M5 (5-Minute Candles) |
+| **Asset** | EURUSD |
+| **TP / SL** | 15 Pips / 8 Pips (Configurable) |
 
 ---
 
-Installation & setup
-
-1. Clone the repo.
-
-2. Create and activate a virtual environment:
-
-
-
-python -m venv venv
-# Windows
-venv\Scripts\activate
-# macOS / Linux
-source venv/bin/activate
-
-3. Install dependencies:
-
-
-
-pip install -r requirements.txt
-
-4. Create a .env in project root with your MT5 credentials:
-
-
-
-MT5_LOGIN=your_account_number
-MT5_PASSWORD=your_password
-MT5_SERVER=ICMarketsSC-Demo
-
+## ✨ Key Highlights
+- 🤖 **Automated Execution:** Seamless integration with MetaTrader 5 Python API.
+- 🕒 **Smart Filtering:** Built-in spread and session filtering (defaults to IST hours).
+- ⚖️ **Risk Management:** Dynamic position sizing and daily loss limits.
+- 📝 **Developer Friendly:** Clear logging and simple configuration structure.
 
 ---
 
-Configuration
+## 💻 Requirements
+Before you begin, ensure you have the following:
+- **Python 3.8+**
+- **MetaTrader 5 Terminal:** Installed and logged in (IC Markets or similar broker).
+- **Network:** Stable internet connection (VPS recommended for 24/7 operation).
 
-Edit config.py to change core parameters. Key options:
+### 📦 Python Dependencies
+Install via `requirements.txt`:
+- `MetaTrader5`
+- `pandas`
+- `numpy`
+- `ta-lib`
+- `python-dotenv`
 
+---
+
+## 🛠 Installation & Setup
+
+1. **Clone the Repository**
+   ```bash
+   git clone https://github.com/your-repo/forex-rsi-bot.git
+   cd forex-rsi-bot
+   ```
+
+2. **Initialize Virtual Environment**
+   ```bash
+   python -m venv venv
+   # Windows:
+   venv\Scripts\activate
+   # macOS / Linux:
+   source venv/bin/activate
+   ```
+
+3. **Install Packages**
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+4. **Environment Configuration**
+   Create a `.env` file in the project root:
+   ```env
+   MT5_LOGIN=your_account_number
+   MT5_PASSWORD=your_password
+   MT5_SERVER=ICMarketsSC-Demo
+   ```
+
+---
+
+## ⚙️ Configuration
+<details>
+<summary>Click to view configuration parameters</summary>
+
+Edit `config.py` to adjust core parameters:
+
+```python
 SYMBOL = "EURUSD"
 TIMEFRAME = mt5.TIMEFRAME_M5
 LOT_SIZE = 0.01
@@ -103,58 +101,64 @@ TAKE_PROFIT_PIPS = 15
 MAX_SPREAD_PIPS = 1.5
 TRADING_START_HOUR = 12   # IST
 TRADING_END_HOUR = 21     # IST
-
+```
+</details>
 
 ---
 
-Run
+## 🏃 Running the Bot
+Ensure your MetaTrader 5 terminal is running and logged in, then execute:
 
-Ensure MT5 terminal is running and logged in, then:
-
+```bash
 python main.py
-
-The bot will connect to MT5, load recent candles, and begin monitoring for signals.
-
-
----
-
-Project layout (short)
-
-main.py            # launcher
-config.py          # strategy & risk params
-src/               # core modules: mt5_connector, strategy, risk_manager, order_manager
-utils/             # logger, indicators
-logs/              # runtime logs
-
+```
+*The bot will automatically connect to MT5, fetch recent candle data, and begin monitoring for signals.*
 
 ---
 
-Safety & testing (must-read)
+## 📂 Project Structure
+<details>
+<summary>Expand project layout</summary>
 
-Demo-test ≥ 60 days before live trading.
-
-Start with the smallest lot (0.01) and limit risk per trade (e.g., 1–1.5% equity).
-
-Never trade during major news events. Monitor spread and slippage.
-
-This software is for educational purposes — trading involves risk.
-
-
-
----
-
-Contributing
-
-Contributions welcome. Please follow PEP8, add tests for new features, and open a PR with a clear description.
-
-
----
-
-License
-
-MIT — see the LICENSE file.
-
+```text
+.
+├── main.py            # Main entry point / launcher
+├── config.py          # Strategy and risk parameters
+├── src/               # Core business logic
+│   ├── mt5_connector  # MT5 API interface
+│   ├── strategy       # RSI logic
+│   ├── risk_manager   # Sizing and limits
+│   └── order_manager  # Trade execution
+├── utils/             # Helper functions (logger, indicators)
+└── logs/              # Runtime log files
+```
+</details>
 
 ---
 
-Last updated: February 2026
+## ⚠️ Safety & Testing
+> [!IMPORTANT]
+> **Always test thoroughly before risking real capital.**
+
+- **Demo Testing:** Run on a demo account for at least 60 days.
+- **Risk Control:** Start with the smallest lot size (0.01) and limit risk per trade (e.g., 1–1.5% equity).
+- **News Events:** Avoid trading during major economic news releases.
+- **Disclaimer:** This software is for educational purposes. Trading involves significant risk of loss.
+
+---
+
+## 🤝 Contributing
+Contributions are welcome!
+- Follow [PEP 8](https://peps.python.org/pep-0008/) style guidelines.
+- Add tests for new features.
+- Open a Pull Request with a clear description of changes.
+
+---
+
+## 📜 License
+Distributed under the **MIT License**. See `LICENSE` for more information.
+
+---
+<div align="center">
+  <sub>Last updated: February 2026</sub>
+</div>
